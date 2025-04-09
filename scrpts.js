@@ -206,8 +206,6 @@ function reveal(answer) {
     } 
     div.className="reveal"
     revealbox.appendChild(div);
-
-    if (answer==opre[currentIndex][1]) {correctAnswers++}
 }
 let alreadyPrintedTryAgain = false;
 function nextOrReveal() {
@@ -218,6 +216,7 @@ function nextOrReveal() {
         div.className = "auto";
         div.textContent = score;
         container.appendChild(div);
+
     if (!alreadyPrintedTryAgain) {
         const revealbox = document.querySelector(".nextbox");
         const playAgain = document.createElement("button");
