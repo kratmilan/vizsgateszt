@@ -158,32 +158,30 @@ let answered = []
 let currentIndex
 let szamlalo = 0
 let correctAnswers=0
+const container = document.querySelector("#question");
 function nextQuestion() {
-    const revealbox= document.querySelector(".nextbox");
-    const oldRev = revealbox.querySelector(".reveal");
-    if (oldRev) {
-        revealbox.removeChild(oldRev);
-    }
-    const container = document.querySelector("#question");
-    const oldDiv = container.querySelector(".auto");
-    if (oldDiv) {
-        container.removeChild(oldDiv);
-    }
+    removeLastQuestion();
+
     do {
         currentIndex = Math.floor(Math.random() * (opre.length));
     }  while ((answered.includes(currentIndex)));
     answered.push(currentIndex);
+
     szamlalo++;
+
     let question = opre[currentIndex][0];
     const div = document.createElement("div");
     div.className = "auto";
     div.textContent = question;
     container.appendChild(div);
+
     const headerContainer= document.querySelector("#header");
     const oldCounter = headerContainer.querySelector(".counter");
+
     if (oldCounter) {
         headerContainer.removeChild(oldCounter);
     }
+
     const currentCounter = document.createElement("div");
     currentCounter.className= "counter";
     currentCounter.textContent = `${szamlalo}/25`;
@@ -191,6 +189,9 @@ function nextQuestion() {
     
 }
 function reveal(answer) {
+    if (answer==opre[currentIndex][1]) {
+        correctAnswers++;
+    }
     const revealbox= document.querySelector(".nextbox")
     const oldRev = revealbox.querySelector(".reveal");
     if (oldRev) {
@@ -198,19 +199,59 @@ function reveal(answer) {
     }
     const div = document.createElement("div")
     if (opre[currentIndex][1]=="I") {
-        div.textContent = "A helyes valasz: IGAZ";
+        div.textContent = "A helyes valasz: IGEN";
     }
     else {
-         div.textContent = "A helyes valasz: HAMIS";
+         div.textContent = "A helyes valasz: NEM";
     } 
     div.className="reveal"
     revealbox.appendChild(div);
 
     if (answer==opre[currentIndex][1]) {correctAnswers++}
 }
+let alreadyPrintedTryAgain = false;
+function nextOrReveal() {
+    if (szamlalo>=25) {
+        removeLastQuestion();
+        let score = `Eredmeny: ${correctAnswers}/25`;
+        const div = document.createElement("div");
+        div.className = "auto";
+        div.textContent = score;
+        container.appendChild(div);
+    if (!alreadyPrintedTryAgain) {
+        const revealbox = document.querySelector(".nextbox");
+        const playAgain = document.createElement("button");
+        playAgain.textContent = "Újra próbálkozik";
+        playAgain.className = "play-again";
+        revealbox.appendChild(playAgain);
+        alreadyPrintedTryAgain=true;
+    }
+
+    } else {
+        nextQuestion();
+    }
+    
+
+}
+
+function removeLastQuestion() {
+    const revealbox= document.querySelector(".nextbox");
+    const oldRev = revealbox.querySelector(".reveal");
+
+    if (oldRev) {
+            revealbox.removeChild(oldRev);
+    }
+
+    const container = document.querySelector("#question");
+    const oldDiv = container.querySelector(".auto");
+
+    if (oldDiv) {
+            container.removeChild(oldDiv);
+        }
+}
 
 const btn = document.querySelector("#next");
-btn.onclick = () => nextQuestion();
+btn.onclick = () => nextOrReveal();
 
 const reveal1 = document.querySelector(".True")
 reveal1.onclick = () => reveal("I");

@@ -7,17 +7,20 @@ body{
     align-items: center;
     justify-content: center;
     min-height: 100vh;  
-    margin: 0;             
+    flex: 1;
+    margin: 0;          
+    flex-basis: 100%;  
 
 }
 .questionBox{
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
     backdrop-filter: blur(6px);
     width: 92%;           
     max-width: 90%;     
-    margin: 0 auto;       
+    margin: 0 auto;    
+    flex: 1;   
 }
 
 
@@ -64,11 +67,12 @@ body{
     font-weight: bold;
     color: #3f4940;
     font-size:3vw;
+    transition-duration: 0.4s;
 }
 .True{
     margin-right: 5%;
 }
-#next{
+#next {
     display: flex;
     margin-top: 3%;
     border-radius: 7px;
@@ -76,6 +80,7 @@ body{
     font-weight: bold;
     color: #3f4940;
     font-size:3vw;
+    transition-duration: 0.4s;
 }
 .reveal{
     padding-left: 5%;
@@ -94,3 +99,23 @@ body{
         margin: 0;  
         text-align: center;
 }
+.True:hover, .False:hover, #next:hover, .play-again:hover{
+    background-color: #627264;
+    color:rgb(216, 221, 221);
+}
+
+.play-again {
+    display:flex;
+    margin-left: 3%;
+    margin-top: 3%;
+    border-radius: 7px;
+    border-color: transparent;
+    font-weight: bold;
+    color: #3f4940;
+    font-size:3vw;
+    transition-duration: 0.4s;
+}
+@keyframes buttonHover {
+
+}
+
