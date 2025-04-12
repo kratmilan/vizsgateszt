@@ -15,12 +15,11 @@ body{
 .questionBox{
     display: flex;
     justify-content: center;
-    align-items: center;
     backdrop-filter: blur(6px);
     width: 92%;           
-    max-width: 90%;     
-    margin: 0 auto;    
+    max-width: 90%;         
     flex: 1;   
+    transition-duration: 0.4s;
 }
 
 
@@ -35,6 +34,9 @@ body{
     border: 1px solid rgba(255, 255, 255, 0.28);
     padding: 5%;
     padding-top: 5%;
+    transition-duration: 0.4s;
+    width: 90vh;
+
 }
 #header{
     display: flex  ;
@@ -49,6 +51,7 @@ body{
     padding: 5%;
     border-radius: 16px;
     font-size:3vw;
+    
 }
 .auto{
     display: flex;
@@ -60,7 +63,7 @@ body{
     flex-wrap: wrap;
     margin-top: 5%;
 }
-.True, .False  {
+.True, .False {
     flex: 1;
     border-radius: 7px;
     border-color: transparent;
@@ -72,7 +75,7 @@ body{
 .True{
     margin-right: 5%;
 }
-#next {
+#next, .play-again {
     display: flex;
     margin-top: 3%;
     border-radius: 7px;
@@ -83,6 +86,7 @@ body{
     transition-duration: 0.4s;
 }
 .reveal{
+    margin-top: 100px;
     padding-left: 5%;
     display: flex;
     font-size:3vw;

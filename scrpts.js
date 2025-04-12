@@ -1,4 +1,3 @@
-fetch("opre.txt")
 const opre = [
     ["Az NT ütemezője a kernel módban, egy darab ütemező modulban található?", "H"],
     ["A tároló méretét megnövelve a FAT mérete nem arányosan növekszik?", "H"],
@@ -155,9 +154,9 @@ const opre = [
     ["A kliens-szerver modellt a vevőoldali port jellemzi?", "I"]
   ];
 let answered = []
-let currentIndex
-let szamlalo = 0
-let correctAnswers=0
+let currentIndex;
+let szamlalo = 0;
+let correctAnswers=0;
 const container = document.querySelector("#question");
 function nextQuestion() {
     removeLastQuestion();
@@ -220,9 +219,13 @@ function nextOrReveal() {
     if (!alreadyPrintedTryAgain) {
         const revealbox = document.querySelector(".nextbox");
         const playAgain = document.createElement("button");
-        playAgain.textContent = "Újra próbálkozik";
+        playAgain.textContent = "Újra próbálkozas";
         playAgain.className = "play-again";
         revealbox.appendChild(playAgain);
+        
+        const tryAgain = document.querySelector(".play-again");
+        tryAgain.onclick = () => restart();
+
         alreadyPrintedTryAgain=true;
     }
 
@@ -249,6 +252,24 @@ function removeLastQuestion() {
         }
 }
 
+function restart() {
+    szamlalo=0;
+    correctAnswers=0;
+    alreadyPrintedTryAgain=false;
+    removeItem(".nextbox",".play-again")
+    nextQuestion()
+
+}
+
+function removeItem(remContainer,remName) {
+    const removeContainer = document.querySelector(remContainer)
+    const oldContent = removeContainer.querySelector(remName)
+    if (oldContent) {
+    removeContainer.removeChild(oldContent);
+    }
+}
+
+
 const btn = document.querySelector("#next");
 btn.onclick = () => nextOrReveal();
 
@@ -256,5 +277,6 @@ const reveal1 = document.querySelector(".True")
 reveal1.onclick = () => reveal("I");
 const reveal2 = document.querySelector(".False")
 reveal2.onclick = () => reveal("H");
+
 
 
