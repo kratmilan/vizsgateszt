@@ -6,4 +6,4 @@
   
 📗What I've learned: DOM manipulation, randomisation in JS, CSs, handling lists in JS 📗  
 
-👀Check the Project here: https://kratmilan.github.io/vizsgateszt/
+👀 https://kratmilan.github.io/vizsgateszt/
