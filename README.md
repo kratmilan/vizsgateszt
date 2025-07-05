@@ -5,3 +5,5 @@
 ⚡Difficulties: Started this right after learning about DOM manipulation, had problems with storing questions (but ended up saving them in the source code, which i hate)⚡  
   
 📗What I've learned: DOM manipulation, randomisation in JS, CSs, handling lists in JS 📗  
+
+👀Check the Project here: https://kratmilan.github.io/vizsgateszt/
